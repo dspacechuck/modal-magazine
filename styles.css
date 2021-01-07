@@ -1,0 +1,360 @@
+/* Setup snippets, includes accessibility, borderbox, clearfix, and normalize */
+
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+*, *:before, *:after {box-sizing: inherit}
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+/* CSS Variables */
+:root{
+    --gRatio: 1.618px;
+    --red: #a81a15;
+    --blue: #6A849E;
+    --grey: #666666;
+    --black: #333333;
+}
+
+/* Strip default margins and padding from all elements */
+*{  
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid green; */
+}
+
+/* General formatting for body */
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 62.5%;
+    font-weight: 300;
+    color: #666666;
+}
+
+/* CSS Grid Main Wrapper to enforce  */
+.mainWrapper{
+    display: grid;   
+    /* Enforce golden rectangle ratios for mainWrapper vs. margin widths but ensure mainWrapper is at least 1024px as a priority*/
+    /* Two margins per side to allow for extra content/styling flexibility */
+    grid-template-columns: 1fr 60px minmax(640px, 1200px) 60px 1fr ;
+}
+
+/* Supplementary class for Navbar */
+.navProps{
+    position: fixed;
+    z-index: 12;
+    width: 100%;
+    background: white;
+}
+
+/* Properties for Navbar */
+nav{
+    /* position: fixed; */
+    /* z-index: 12; */
+    /* background: white; */
+    /* opacity: 70%; */
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* height: 100px; */
+    overflow: hidden;
+    padding: 5px;
+    /* background: green; */
+    /* background-attachment: fixed; */
+}
+
+/* Properties for each link DIV within the Navbar */
+nav div{
+    padding: 10px 20px;
+}
+
+/* Formatting specifically for hyperlinks in Navbar */
+nav a{
+    color: var(--grey);
+}
+
+/* Formatting for hover state of Navbar hyperlinks */
+nav a:hover{
+    color: var(--red);
+}
+
+/* CSS Grid to manage layout of each article */
+/* .mainContentInner{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: flex-start;
+    margin-top: 60px;
+    gap: 60px;
+} */
+
+/* Main flex container for articles and site logo */
+.mainContentInner{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+/* Set flex properties for mainContentInner Children */
+.mainContentInner>section,
+.mainContentInner>article{
+    margin-bottom: 60px;
+}
+
+/* Formatting for logo column text */
+.logoCol{
+    text-align: center;
+    width: calc(100%/4 - 30px);
+}
+
+/* Formatting for logo within logo column */
+.logoCol img{
+    max-width: 100px;
+    height: auto;
+    /* Change image from display: inline --> display: block to remove white space beneath it */
+    display: block;
+    margin: 0 auto;
+
+    transition-property: all;
+    transition-duration: 0.6s;
+    transition-timing-function: ease;
+}
+
+.logoCol img:hover{
+    transform: scale(0.8);
+}
+
+/* .logoCol div{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    border: 5px solid orange;
+} */
+
+/* Formatting for logo column text */
+.logoCol p{
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-style: normal;
+    margin: 5px 0;
+    display: inline-block;
+    letter-spacing: 0.08rem;
+}
+
+/* Formatting for header H1 */
+h1{
+    color: var(--black);
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-top: 4px;
+    /* line-height: ; */
+}
+
+/* Formatting for "magazine" part of h1 */
+h1 span{
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 15px 0;
+    letter-spacing: 0.14rem;
+}
+
+/* Formatting for header H2 */
+/* h2{
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 15px 0;
+    letter-spacing: 0.14rem;
+} */
+
+/* Title labels for each article */
+h3{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--black);
+    margin: 15px 0;
+    letter-spacing: 0.14rem;
+}
+
+
+
+/* General formatting for hyperlinks */
+a{
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--red);
+    display: inline-block;
+}
+
+/* Standard formatting for all articles */
+article{
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    /* line-height: 25px; */
+    /* /* border: 3px solid orange; */
+    height: 100%;
+}
+
+/* Formatting for links within articles only */
+.articleFrame a{
+    margin: 5px 0;
+}
+
+/* Formatting for images within articles */
+.articleFrame img{
+    width: 100%;
+}
+
+
+/* Normal article frame */
+.articleFrame{
+    display: flex;
+    width: calc(100%/4 - 30px);
+    /* height: 100%; */
+    flex-direction: column;
+    align-items: flex-start;
+    /* border: 3px solid blue; */
+    /* flex-wrap: wrap; */
+    /* border: 3px solid orange; */
+    /* max-width: calc(35vh - 60px); */
+    /* max-width: 600px; */
+}
+
+/* For article to span two columns. */
+.largeFrame{
+    width: calc(100%/2 - 30px);
+    /* max-width: 600px; */
+}
+
+/* .articleTextFrame{
+    overflow: hidden;
+    text-overflow: ellipsis; 
+} */
+
+.pubDate{
+    /* display: inline-block; */
+    /* border: 3px solid green; */
+    /* padding-right: 15px; */
+}
+
+.articleDetails{
+    color: var(--red);
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 15px 0;
+    letter-spacing: 0.1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Category labels for each article */
+h4{
+    font-size: 1rem;
+    font-weight: 400;
+    /* color: var(--red); */
+    /* margin: 15px 0; */
+    letter-spacing: 0.1rem;
+    /* display: inline-block; */
+}
+
+/* Formatting for excerpt text within article */
+.excerpt{
+    display: block;
+    /* I.e. set "p" to 5 lines of text */
+    max-height: 125px;
+    line-height: 25px;
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    word-wrap: normal;
+    position: relative;
+    padding-right: 11px;
+}
+
+/* Add ellipsis to article paragraph */
+.excerpt::before{
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* padding-right: 3px; */
+}
+
+/* Cover up ellipsis to article paragraph if line height is less than 5 */
+.excerpt::after{
+    content:"";
+    position: absolute;
+    right: 0;
+    background: white;
+    height: 2rem;
+    width: 1rem;
+}
+
+.footerContents{
+    margin-top: 0px;
+    margin-bottom: 70px;
+}
+
+/* Specifies properties for footer font section */
+footer p{
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Primary class for footer logos */
+.footerLogos{
+    display: flex;
+    justify-content: center;
+    /* border: 3px solid green; */
+    /* margin-bottom: 70px; */
+    
+}
+
+.footerLogos a{
+    padding: 5px 10px;
+}
+
+/* Set initial state of footer icons */
+.footerLogos img{
+    width: 18px;
+    height: 18px;
+
+    /* width: 28px;
+    height: auto; */
+    /* padding: 5px 10px;  */
+    opacity: 65%;
+    transition-property: all;
+    /* transition-timing-function: cubic-bezier(0,.29,.83,.67); */
+    transition-timing-function: ease;
+    transition-duration: 0.6s;
+}
+
+/* Pseudo-class for mouseover of footer logos */
+.footerLogos img:hover{
+    opacity: 90%;
+    /* background-color: var(--blue); */
+    /* padding-bottom: 2px; */
+    /* height: 30px; */
+    transform: scale(0.8);
+}
+
+
+/* Media queries for screen sizes smaller than 1300px */
+
+@media (max-width: 800px){
+    /* Maximize mainWrapper width while retaining some margins while on mobile */
+    .mainWrapper{
+        grid-template-columns: 0.25fr 0.25fr 4fr 0.25fr 0.25fr ;
+    }
+
+    .articleFrame, .logoCol{
+        width: 100%;
+    }
+}
