@@ -23,7 +23,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *{  
     margin: 0;
     padding: 0;
-    /* border: 1px solid green; */
 }
 
 /* General formatting for body */
@@ -34,10 +33,9 @@ body{
     color: #666666;
 }
 
-/* CSS Grid Main Wrapper to enforce  */
+/* CSS Grid Main Wrapper to enforce golden rectangle ratios for mainWrapper vs. margin widths but ensure mainWrapper is at least 1024px as a priority*/
 .mainWrapper{
     display: grid;   
-    /* Enforce golden rectangle ratios for mainWrapper vs. margin widths but ensure mainWrapper is at least 1024px as a priority*/
     /* Two margins per side to allow for extra content/styling flexibility */
     grid-template-columns: 1fr 60px minmax(640px, 1200px) 60px 1fr ;
 }
@@ -52,19 +50,12 @@ body{
 
 /* Properties for Navbar */
 nav{
-    /* position: fixed; */
-    /* z-index: 12; */
-    /* background: white; */
-    /* opacity: 70%; */
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
-    /* height: 100px; */
     overflow: hidden;
     padding: 5px;
-    /* background: green; */
-    /* background-attachment: fixed; */
 }
 
 /* Properties for each link DIV within the Navbar */
@@ -81,16 +72,6 @@ nav a{
 nav a:hover{
     color: var(--red);
 }
-
-/* CSS Grid to manage layout of each article */
-/* .mainContentInner{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: flex-start;
-    margin-top: 60px;
-    gap: 60px;
-} */
 
 /* Main flex container for articles and site logo */
 .mainContentInner{
@@ -116,7 +97,6 @@ nav a:hover{
 .logoCol img{
     max-width: 100px;
     height: auto;
-    /* Change image from display: inline --> display: block to remove white space beneath it */
     display: block;
     margin: 0 auto;
 
@@ -128,13 +108,6 @@ nav a:hover{
 .logoCol img:hover{
     transform: scale(0.8);
 }
-
-/* .logoCol div{
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    border: 5px solid orange;
-} */
 
 /* Formatting for logo column text */
 .logoCol p{
@@ -163,14 +136,6 @@ h1 span{
     letter-spacing: 0.14rem;
 }
 
-/* Formatting for header H2 */
-/* h2{
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin: 15px 0;
-    letter-spacing: 0.14rem;
-} */
-
 /* Title labels for each article */
 h3{
     font-size: 1.2rem;
@@ -179,8 +144,6 @@ h3{
     margin: 15px 0;
     letter-spacing: 0.14rem;
 }
-
-
 
 /* General formatting for hyperlinks */
 a{
@@ -196,8 +159,6 @@ article{
     font-size: 1rem;
     font-weight: 400;
     font-style: normal;
-    /* line-height: 25px; */
-    /* /* border: 3px solid orange; */
     height: 100%;
 }
 
@@ -211,31 +172,18 @@ article{
     width: 100%;
 }
 
-
 /* Normal article frame */
 .articleFrame{
     display: flex;
     width: calc(100%/4 - 30px);
-    /* height: 100%; */
     flex-direction: column;
     align-items: flex-start;
-    /* border: 3px solid blue; */
-    /* flex-wrap: wrap; */
-    /* border: 3px solid orange; */
-    /* max-width: calc(35vh - 60px); */
-    /* max-width: 600px; */
 }
 
 /* For article to span two columns. */
 .largeFrame{
     width: calc(100%/2 - 30px);
-    /* max-width: 600px; */
 }
-
-/* .articleTextFrame{
-    overflow: hidden;
-    text-overflow: ellipsis; 
-} */
 
 .pubDate{
     /* display: inline-block; */
@@ -258,10 +206,7 @@ article{
 h4{
     font-size: 1rem;
     font-weight: 400;
-    /* color: var(--red); */
-    /* margin: 15px 0; */
     letter-spacing: 0.1rem;
-    /* display: inline-block; */
 }
 
 /* Formatting for excerpt text within article */
@@ -270,7 +215,6 @@ h4{
     /* I.e. set "p" to 5 lines of text */
     max-height: 125px;
     line-height: 25px;
-    /* text-overflow: ellipsis; */
     overflow: hidden;
     word-wrap: normal;
     position: relative;
@@ -283,7 +227,6 @@ h4{
     position: absolute;
     bottom: 0;
     right: 0;
-    /* padding-right: 3px; */
 }
 
 /* Cover up ellipsis to article paragraph if line height is less than 5 */
@@ -311,10 +254,7 @@ footer p{
 /* Primary class for footer logos */
 .footerLogos{
     display: flex;
-    justify-content: center;
-    /* border: 3px solid green; */
-    /* margin-bottom: 70px; */
-    
+    justify-content: center;   
 }
 
 .footerLogos a{
@@ -325,13 +265,8 @@ footer p{
 .footerLogos img{
     width: 18px;
     height: 18px;
-
-    /* width: 28px;
-    height: auto; */
-    /* padding: 5px 10px;  */
     opacity: 65%;
     transition-property: all;
-    /* transition-timing-function: cubic-bezier(0,.29,.83,.67); */
     transition-timing-function: ease;
     transition-duration: 0.6s;
 }
@@ -339,19 +274,15 @@ footer p{
 /* Pseudo-class for mouseover of footer logos */
 .footerLogos img:hover{
     opacity: 90%;
-    /* background-color: var(--blue); */
-    /* padding-bottom: 2px; */
-    /* height: 30px; */
     transform: scale(0.8);
 }
 
 
 /* Media queries for screen sizes smaller than 1300px */
-
 @media (max-width: 800px){
     /* Maximize mainWrapper width while retaining some margins while on mobile */
     .mainWrapper{
-        grid-template-columns: 0.25fr 0.25fr 4fr 0.25fr 0.25fr ;
+        grid-template-columns: 0.25fr 0.25fr 4fr 0.25fr 0.25fr;
     }
 
     .articleFrame, .logoCol{
